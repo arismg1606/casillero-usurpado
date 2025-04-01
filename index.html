@@ -29,6 +29,14 @@
             animation: pulse 1.5s infinite; /* Animación de pulso para el temporizador */
         }
 
+        #casilleroNumero {
+            font-size: 120px; /* Tamaño grande para el número */
+            color: #ff5733; /* Color llamativo para el número */
+            font-weight: bold;
+            margin-top: 50px;
+            animation: bounceIn 1s ease-out; /* Animación de entrada para el número */
+        }
+
         /* Animación de entrada (desvanecimiento) */
         @keyframes fadeIn {
             from {
@@ -73,6 +81,9 @@
     <h1>Casillero Usurpado</h1>
     <p>Tiempo restante para la apertura:</p>
     <div id="timer"></div>
+
+    <!-- Agrega el número de casillero -->
+    <div id="casilleroNumero">31</div>
 
     <script>
         function obtenerFechaInicio() {
