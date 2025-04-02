@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casillero Usurpado</title>
+    <title>Casillero 31 Liberado</title>
     <style>
         body {
             background-color: black;
@@ -13,107 +13,51 @@
             font-size: 24px;
             margin: 0;
             padding: 50px;
-            animation: fadeIn 2s ease-in-out; /* Animación de entrada para el fondo */
+            animation: fadeIn 2s ease-in-out;
         }
 
         h1 {
-            font-size: 48px;
+            font-size: 60px;
             margin-bottom: 20px;
-            animation: bounceIn 1s ease-out; /* Animación de rebote para el título */
+            animation: bounceIn 1s ease-out;
+            color: #00ff00;
         }
 
-        #timer {
-            font-size: 48px;
+        #casillero {
+            font-size: 80px;
             font-weight: bold;
             margin-top: 20px;
-            animation: pulse 1.5s infinite; /* Animación de pulso para el temporizador */
+            animation: pulse 1.5s infinite;
+            color: #00ff00;
         }
 
-        #casilleroNumero {
-            font-size: 120px; /* Tamaño grande para el número */
-            color: #ff5733; /* Color llamativo para el número */
-            font-weight: bold;
-            margin-top: 50px;
-            animation: bounceIn 1s ease-out; /* Animación de entrada para el número */
-        }
-
-        /* Animación de entrada (desvanecimiento) */
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        /* Animación de rebote para el título */
         @keyframes bounceIn {
-            0% {
-                transform: scale(0);
-            }
-            50% {
-                transform: scale(1.2);
-            }
-            100% {
-                transform: scale(1);
-            }
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
         }
 
-        /* Animación de pulso para el temporizador */
         @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.1);
-                opacity: 0.8;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
         }
     </style>
 </head>
 <body>
-    <h1>Casillero Usurpado</h1>
-    <p>Tiempo restante para la apertura:</p>
-    <div id="timer"></div>
+    <h1>¡Casillero Liberado!</h1>
+    <div id="casillero">31</div>
 
-    <!-- Agrega el número de casillero -->
-    <div id="casilleroNumero">31</div>
-
+    <audio id="unlockSound" src="https://www.fesliyanstudios.com/play-mp3/4387" preload="auto"></audio>
     <script>
-        function obtenerFechaInicio() {
-            const ahora = new Date();
-            ahora.setHours(12, 0, 0, 0); // Fijar a las 12:00 PM
-            return ahora.getTime();
-        }
-
-        const inicioCuentaRegresiva = obtenerFechaInicio();
-        const duracion = 48 * 60 * 60 * 1000; // 48 horas en milisegundos
-        const fin = inicioCuentaRegresiva + duracion;
-        
-        function actualizarCuentaRegresiva() {
-            const ahora = new Date().getTime();
-            const diferencia = fin - ahora;
-
-            if (diferencia <= 0) {
-                document.getElementById("timer").innerHTML = "¡Casillero Roto!";
-                return;
-            }
-
-            const horas = Math.floor(diferencia / (1000 * 60 * 60));
-            const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-            const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-
-            document.getElementById("timer").innerHTML = `${horas}h ${minutos}m ${segundos}s`;
-        }
-        
-        setInterval(actualizarCuentaRegresiva, 1000);
-        actualizarCuentaRegresiva();
+        window.onload = function() {
+            document.getElementById("unlockSound").play();
+        };
     </script>
 </body>
 </html>
